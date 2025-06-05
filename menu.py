@@ -5,11 +5,11 @@ def menu_principal():
     print(" Menu --> Programa")
     print("-----------------------------------------------------------")
     print("|              1- Cliente                                   |")
-    print("|               2- Categoria                                |")
-    print("|                3- Produto                                 |")
-    print("|                 4- Usuario                                |")
-    print("|                  5- Vendas                                |")
-    print("|                   6- Sair do sistema                      |")
+    print("|              2- Categoria                                 |")
+    print("|              3- Produto                                   |")
+    print("|              4- Usuario                                   |")
+    print("|              5- Vendas                                    |")
+    print("|              6- Sair do sistema                          |")
     print("|-----------------------------------------------------------|")
 
     while True :
