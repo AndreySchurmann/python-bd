@@ -2,15 +2,15 @@ from conexao import conecta_db
 def opcoes_menu():
     print("|______________________________________________________________________________________________________|")
     
-    print("|                                          Cadastro do Cliente                                         |")
+    print("|                                          Cadastro da categoria                                        |")
     
     print("|______________________________________________________________________________________________________|")
-    print("|1-Listar Clientes | 2- Consultar um Cliente por (ID) | 3- Inserir | 4- Alterar | 5- Deletar | 6- Sair |")
+    print("|1-Listar Categoria | 2- Consultar uma categoria(ID) | 3- Inserir | 4- Alterar | 5- Deletar | 6- Sair |")
 
     print("|______________________________________________________________________________________________________|")
 
-def menu_cliente():
-    opcoes_menu()
+    def menu_cliente():
+     opcoes_menu()
 
    
     while True :
@@ -18,29 +18,29 @@ def menu_cliente():
         conexao = conecta_db()
         
         if opcao == "1":
-            listar_cliente(conexao)
+            listar_categoria(conexao)
             opcoes_menu()
         
         elif opcao == "2":
-            listar_cliente(conexao)
-            consultar_cliente_por_id(conexao)
+            listar_categoria(conexao)
+            consultar_categoria_por_id(conexao)
             opcoes_menu()
 
         elif opcao == "3":
-            inserir_cliente(conexao)
-            listar_cliente(conexao)
+            inserir_categoria(conexao)
+            listar_categoria(conexao)
             opcoes_menu()
 
         elif opcao == "4":
-            listar_cliente(conexao)
+            listar_categoria(conexao)
             atualizar_cliente(conexao)
-            listar_cliente(conexao)
+            listar_categoria(conexao)
             menu_cliente()
 
         elif opcao == "5":
-            listar_cliente(conexao)
+            listar_categoria(conexao)
             deletar_cliente(conexao)
-            listar_cliente(conexao)
+            listar_categoria(conexao)
             menu_cliente()
 
         elif opcao == "6":
@@ -52,7 +52,7 @@ def menu_cliente():
 
 
     
-def listar_cliente(conexao):
+def listar_categoria(conexao):
     cursor = conexao.cursor()
     # Execução do select no banco de dados
     cursor.execute("select id,nome from cliente order by id asc")
@@ -63,7 +63,7 @@ def listar_cliente(conexao):
         print(f"|ID: {registro[0]} - Nome: {registro[1]} ")
     print("|_____________________________________________________________________|")
 
-def consultar_cliente_por_id(conexao):
+def consultar_categoria_por_id(conexao):
         id= (input ("Digite o ID: "))
         cursor = conexao.cursor()
         cursor.execute("select id,nome from cliente where id = " + id)
@@ -76,8 +76,8 @@ def consultar_cliente_por_id(conexao):
                 print(f"| Nome : {registro[1]}")
             
 
-def inserir_cliente(conexao):
-         print("Inserir o Cliente ...")
+def inserir_categoria(conexao):
+         print("Inserir a Categoria ...")
          cursor = conexao.cursor()
          nome = input("Nome: ")
          sql_insert = "insert into cliente(nome) values ('" + nome + "')"
