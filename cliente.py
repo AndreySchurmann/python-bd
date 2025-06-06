@@ -1,16 +1,13 @@
 from conexao import conecta_db
-def opcoes_menu():
-    print("|______________________________________________________________________________________________________|")
-    
-    print("|                                          Cadastro do Cliente                                         |")
-    
-    print("|______________________________________________________________________________________________________|")
-    print("|1-Listar Clientes | 2- Consultar um Cliente por (ID) | 3- Inserir | 4- Alterar | 5- Deletar | 6- Sair |")
+def opcoes_menu(titulo):
+    print("┌──────────────────────────────────────────────────────────────────────────────────────────────────────┐ ")
+    print("│                                          Cadastro do Cliente                                         │")
+    print("│──────────────────┬──────────────────────────────────┬────────────┬────────────┬────────────┬─────────│")
+    print("│1-Listar Clientes │ 2- Consultar um Cliente por (ID) │ 3- Inserir │ 4- Alterar │ 5- Deletar │ 6- Sair │")
+    print("└──────────────────┴──────────────────────────────────┴────────────┴────────────┴────────────┴─────────┘ ")
 
-    print("|______________________________________________________________________________________________________|")
-
-def menu_cliente():
-    opcoes_menu()
+def menu_cliente(titulo):
+    opcoes_menu(titulo)
 
    
     while True :
@@ -19,29 +16,29 @@ def menu_cliente():
         
         if opcao == "1":
             listar_cliente(conexao)
-            opcoes_menu()
+            opcoes_menu(titulo)
         
         elif opcao == "2":
             listar_cliente(conexao)
             consultar_cliente_por_id(conexao)
-            opcoes_menu()
+            opcoes_menu(titulo)
 
         elif opcao == "3":
             inserir_cliente(conexao)
             listar_cliente(conexao)
-            opcoes_menu()
+            opcoes_menu(titulo)
 
         elif opcao == "4":
             listar_cliente(conexao)
             atualizar_cliente(conexao)
             listar_cliente(conexao)
-            menu_cliente()
+            menu_cliente(titulo)
 
         elif opcao == "5":
             listar_cliente(conexao)
             deletar_cliente(conexao)
             listar_cliente(conexao)
-            menu_cliente()
+            menu_cliente(titulo)
 
         elif opcao == "6":
             print ("Sair")

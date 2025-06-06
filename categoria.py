@@ -1,16 +1,7 @@
 from conexao import conecta_db
-def opcoes_menu():
-    print("|______________________________________________________________________________________________________|")
-    
-    print("|                                          Cadastro da categoria                                        |")
-    
-    print("|______________________________________________________________________________________________________|")
-    print("|1-Listar Categoria | 2- Consultar uma categoria(ID) | 3- Inserir | 4- Alterar | 5- Deletar | 6- Sair |")
-
-    print("|______________________________________________________________________________________________________|")
-
-    def menu_cliente():
-     opcoes_menu()
+from menu import opcoes_menu
+def menu_categoria(titulo):
+    opcoes_menu(titulo)
 
    
     while True :
@@ -19,29 +10,29 @@ def opcoes_menu():
         
         if opcao == "1":
             listar_categoria(conexao)
-            opcoes_menu()
+            opcoes_menu(titulo)
         
         elif opcao == "2":
             listar_categoria(conexao)
             consultar_categoria_por_id(conexao)
-            opcoes_menu()
+            opcoes_menu(titulo)
 
         elif opcao == "3":
             inserir_categoria(conexao)
             listar_categoria(conexao)
-            opcoes_menu()
+            opcoes_menu(titulo)
 
         elif opcao == "4":
             listar_categoria(conexao)
-            atualizar_cliente(conexao)
+            atualizar_categoria(conexao)
             listar_categoria(conexao)
-            menu_cliente()
+            opcoes_menu(titulo)
 
         elif opcao == "5":
             listar_categoria(conexao)
-            deletar_cliente(conexao)
+            deletar_categoria(conexao)
             listar_categoria(conexao)
-            menu_cliente()
+            opcoes_menu(titulo)
 
         elif opcao == "6":
             print ("Sair")
@@ -55,7 +46,7 @@ def opcoes_menu():
 def listar_categoria(conexao):
     cursor = conexao.cursor()
     # Execução do select no banco de dados
-    cursor.execute("select id,nome from cliente order by id asc")
+    cursor.execute("select id,nome from categoria order by id asc")
     #recuperar todos registros
     registros = cursor.fetchall()
     print("|_____________________________________________________________________|")
@@ -66,11 +57,11 @@ def listar_categoria(conexao):
 def consultar_categoria_por_id(conexao):
         id= (input ("Digite o ID: "))
         cursor = conexao.cursor()
-        cursor.execute("select id,nome from cliente where id = " + id)
+        cursor.execute("select id,nome from categoria where id = " + id)
         registro = cursor.fetchone()
 
         if registro is None:
-                print("Cliente não encontrado")
+                print("Categoria não encontrado")
         else:
                 print(f"| ID : {registro[0]}")
                 print(f"| Nome : {registro[1]}")
@@ -80,24 +71,24 @@ def inserir_categoria(conexao):
          print("Inserir a Categoria ...")
          cursor = conexao.cursor()
          nome = input("Nome: ")
-         sql_insert = "insert into cliente(nome) values ('" + nome + "')"
+         sql_insert = "insert into categoria(nome) values ('" + nome + "')"
          cursor.execute(sql_insert)
          conexao.commit()
 
-def atualizar_cliente(conexao):
-         print("Alterando dados dos cliente")
+def atualizar_categoria(conexao):
+         print("Alterando dados da categoria")
          cursor = conexao.cursor()
          id = input("Digite o ID : ")
          nome = input("Nome: ")
-         sql_update = "update cliente set nome ='" + nome + "'where id = " + id
+         sql_update = "update categoria set nome ='" + nome + "'where id = " + id
          cursor.execute(sql_update)
          conexao.commit()
 
-def deletar_cliente(conexao):
-         print("Qual cliente deseja deletar? ")
+def deletar_categoria(conexao):
+         print("Qual categoria deseja deletar? ")
          cursor = conexao.cursor()
          id = input("Digite o ID : ")
-         sql_delete = "delete from cliente where id = " +id
+         sql_delete = "delete from categoria where id = " +id
          cursor.execute(sql_delete)
          conexao.commit()   
-       
+    
