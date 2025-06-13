@@ -1,5 +1,7 @@
 from cliente import menu_cliente
 from categoria import menu_categoria
+from produto import menu_produto
+
 def menu_principal():
     print("───────────────────────────────────────────────────────────")
     print(" Menu --> Programa")
@@ -18,25 +20,23 @@ def menu_principal():
         if opcao =="1":
             menu_cliente("Cliente")
         
-        if opcao =="2":
+        elif opcao =="2":
            menu_categoria("Categoria")
 
-        if opcao =="3":
-            print("cadastro do Produto")
-        ("opcao --Cadastro de Produto")
+        elif opcao =="3":
+           menu_produto("Produto")
 
-        if opcao =="4":
+        elif opcao =="4":
             print("cadastro do Usuario")
-        ("opcao --Cadastro de Usuario")
-
-        if opcao =="5":
+        
+        elif opcao =="5":
             print("cadastro do Vendas")
-        ("opcao --Cadastro de Vendas")
-
-        if opcao == "6":
+        
+        elif opcao == "6":
             print ("Sair do sistema")
             break
-        else: ("opcao --Sair do sistema")
+        else: 
+            print("Opcao invalida")
 
 
 if __name__ == "__main__":

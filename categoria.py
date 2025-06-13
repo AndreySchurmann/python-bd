@@ -1,5 +1,6 @@
 from conexao import conecta_db
 from menu import opcoes_menu
+
 def menu_categoria(titulo):
     opcoes_menu(titulo)
 
