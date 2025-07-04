@@ -80,7 +80,7 @@ def listar_usuario(conexao):
     
     for registro in registros:
        print(f"| ID: {registro[0]} - Login: {registro[1]} - Admin: {registro[2]}") 
-print('│└────────────────────────────────────────────────────────────────────────────────────────────────────┘ │")')
+
        
 
 def consultar_usuario_por_id(conexao):
